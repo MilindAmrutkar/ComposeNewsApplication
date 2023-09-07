@@ -20,7 +20,7 @@ abstract class SafeApiRequest {
                 }
             }
             Log.d("TAG", "safeApiRequest: ${message.toString()}")
-            throw Exception(message = message.toString())
+            throw Exception(message.toString())
         }
     }
 }

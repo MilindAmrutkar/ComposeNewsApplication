@@ -28,11 +28,11 @@ class NewsViewModel @Inject constructor(private val getNewsArticleUseCase: GetNe
                 }
 
                 is Resource.Error -> {
-                    articles.value = HomeStateHolder(data = it.data)
+                    articles.value = HomeStateHolder(error = it.message.toString())
                 }
 
                 is Resource.Success -> {
-                    articles.value = HomeStateHolder(error = it.message.toString())
+                    articles.value = HomeStateHolder(data = it.data)
                 }
             }
         }.launchIn(viewModelScope)
