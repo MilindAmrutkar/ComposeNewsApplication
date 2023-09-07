@@ -55,6 +55,41 @@ dependencies {
     val pagingVersion = "3.2.0"
     val navVersion = "2.7.1"
     val retrofitVersion = "2.9.0"
+    val roomVersion = "2.5.2"
+    val daggerHiltVersion = "2.47"
+    val okHttpBomVersion = "4.11.0"
+    val moshiVersion = "1.14.0"
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+//    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
+
+    // OkHttp
+    // define a BOM and its version
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:$okHttpBomVersion"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+    //Moshi
+    implementation("com.squareup.moshi:moshi:$moshiVersion")
+    implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+
+    // Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+
+    // Dagger-Hilt
+    implementation("com.google.dagger:hilt-android:$daggerHiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$daggerHiltVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     // paging 3
     implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
@@ -66,19 +101,10 @@ dependencies {
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    //dagger-hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-
-    //retrofit
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-
-    // coil
+    // Coil
     implementation("io.coil-kt:coil-compose:2.4.0")
-    implementation("androidx.core:core-ktx:1.9.0")
+
+    implementation("androidx.core:core-ktx:1.10.1")
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.activity:activity-compose:1.7.2")

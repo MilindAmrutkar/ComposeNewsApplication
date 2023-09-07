@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.backtocoding.composenewsapplication.presentation.screens.HomeScreen
+import com.backtocoding.composenewsapplication.presentation.navigation.Navigation
 import com.backtocoding.composenewsapplication.ui.theme.ComposeNewsApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     MyApp {
-                        HomeScreen()
+                        Navigation()
                     }
                 }
             }

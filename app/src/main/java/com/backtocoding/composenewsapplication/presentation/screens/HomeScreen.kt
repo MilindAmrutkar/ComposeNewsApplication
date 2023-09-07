@@ -1,6 +1,7 @@
 package com.backtocoding.composenewsapplication.presentation.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,12 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.backtocoding.composenewsapplication.domain.model.Article
 import com.backtocoding.composenewsapplication.presentation.viewmodel.NewsViewModel
 
 @Composable
-fun HomeScreen(viewModel: NewsViewModel = hiltViewModel()) {
+fun HomeScreen(navController: NavController, viewModel: NewsViewModel = hiltViewModel()) {
     val res = viewModel.articles.value
 
     if (res.isLoading) {
@@ -44,15 +46,19 @@ fun HomeScreen(viewModel: NewsViewModel = hiltViewModel()) {
     res.data?.let {
         LazyColumn {
             items(it) {
-                ArticleItem(it)
+                ArticleItem(it) { title ->
+                    navController.navigate("details_screen/${title}")
+                }
             }
         }
     }
 }
 
 @Composable
-fun ArticleItem(it: Article) {
-    Column(modifier = Modifier) {
+fun ArticleItem(it: Article, onClick: (String) -> Unit) {
+    Column(modifier = Modifier.clickable {
+        onClick.invoke(it.title)
+    }) {
         Image(
             painter = rememberAsyncImagePainter(model = it.urlToImage), contentDescription = null,
             modifier = Modifier
