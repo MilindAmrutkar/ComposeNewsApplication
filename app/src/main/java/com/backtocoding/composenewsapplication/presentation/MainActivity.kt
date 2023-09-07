@@ -1,4 +1,4 @@
-package com.backtocoding.composenewsapplication
+package com.backtocoding.composenewsapplication.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
