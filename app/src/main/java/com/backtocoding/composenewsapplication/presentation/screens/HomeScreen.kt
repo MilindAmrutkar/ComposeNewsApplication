@@ -15,9 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.backtocoding.composenewsapplication.domain.model.Article
@@ -55,12 +57,17 @@ fun ArticleItem(it: Article) {
             painter = rememberAsyncImagePainter(model = it.urlToImage), contentDescription = null,
             modifier = Modifier
                 .height(300.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
         )
 
         Text(
             text = it.title,
-            style = TextStyle(color = Color.Gray, fontWeight = FontWeight.SemiBold),
+            style = TextStyle(
+                color = Color.Gray,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp
+            ),
             modifier = Modifier.padding(12.dp)
         )
 
